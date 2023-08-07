@@ -1,0 +1,64 @@
+﻿@model IEnumerable<CRUD_ASP7.Models.Contacto>
+@{
+    ViewData["Title"] = "Lista de contactos";
+}
+
+<h1 class="text-center"> Contactos en INA Upala ASP.Net Core 7</h1>
+
+<div class="row">
+    <div class="offset-9 col-3 mb-3">
+        <a asp-action="Create" asp-controller="Inicio" class="btn btn-outline-primary d-block mx-auto btn-xl">
+            Nuevo Usuario
+        </a>
+    </div>
+
+</div>
+
+<div class="row">
+    <div class="offset-12">
+        <div class="card border">
+            <div class="card-header bg-dark">
+                <h3 class="text-white"><strong>Lista de Usuarios</strong></h3>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    @if (Model.Count() > 0)
+                    {
+                        <table class="table table-bordered" id="tblUsuarios" width="100%" cellpadding="0">
+                            <thead>
+                                <tr>
+                                    <th>@Html.DisplayNameFor(m => m.Name)</th>
+                                    <th>@Html.DisplayNameFor(m => m.PhoneNumber)</th>
+                                    <th>@Html.DisplayNameFor(m => m.Phone)</th>
+                                    <th>@Html.DisplayNameFor(m => m.Email)</th>
+                                    <th>Opciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>@Html.DisplayFor(m => item.Name)</td>
+                                        <td>@Html.DisplayFor(m => item.PhoneNumber)</td>
+                                        <td>@Html.DisplayFor(m => item.Phone)</td>
+                                        <td>@Html.DisplayFor(m => item.Email)</td>
+                                        <td class="text-center ">
+                                            <a class="btn btn-warning" asp-action="Edit" asp-route-id="@item.Id"><i class="bi bi-pencil-fill mx-2"></i>Editar</a>
+                                            <a class="btn btn-secondary" asp-action="Details" asp-route-id="@item.Id"><i class="bi bi-info-circle-fill mx-2"></i>Detalle</a>
+                                            <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.Id"><i class="bi bi-trash3-fill mx-2"></i>Borrar</a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    }
+                    else
+                    {
+                        <p>No hay registros</p>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
