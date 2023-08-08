@@ -208,6 +208,12 @@ namespace CRUD_ASP7.Controllers
             return PartialView("_DetailsContact",contacto);
 
         }
+        [HttpGet]    
+        public IActionResult _SaludarContacto( int id)
+        {
+            var contacto = _context.Contactos.Find(id);
+            return PartialView("_SaludarContacto", contacto);
+        }
         //este fragmento de código se encarga de manejar errores en una aplicación ASP.NET Core.
         //Cuando se produce un error, el método Error() se ejecuta y devuelve una vista que muestra información sobre el error, incluido un identificador único de solicitud.
         //La respuesta generada no se almacena en caché en absoluto.

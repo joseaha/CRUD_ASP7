@@ -58,10 +58,10 @@
                                         <td>@Html.DisplayFor(m => item.Phone)</td>
                                         <td>@Html.DisplayFor(m => item.Email)</td>
                                         <td class="text-center ">
+                                            <button onclick="showPartial(this)" class="btn btn-primary open-modal" data-url="/Inicio/_SaludarContacto" data-id="@item.Id">saludar</button>
                                             <button onclick="showPartial(this)" class="btn btn-warning open-modal" data-url="/Inicio/_EditContact" data-id="@item.Id"><i class="bi bi-pencil-fill mx-2"></i>Editar</button>
                                             <button onclick="showPartial(this)" class="btn btn-secondary open-modal" data-url="/Inicio/_DetailsContact" data-id="@item.Id"><i class="bi bi-info-circle-fill mx-2"></i>Detalles</button>
                                             <button onclick="showPartial(this)" class="btn btn-danger open-modal" data-url="/Inicio/_DeleteContact" data-id="@item.Id"><i class="bi bi-trash3-fill mx-2"></i>Borrar</button>
-
                                         </td>
                                     </tr>
                                 }
@@ -106,22 +106,24 @@
             });
         });
     </script>
-
     <script>
+        //Obtenemos la dirrecion del controlador que realizar la accion y el Id del modelo a tratar
         function showPartial(triggerElement) {
             var url = $(triggerElement).data("url");
             var id = $(triggerElement).data("id");
 
             // Concatenar el ID en la URL
             url += "?id=" + id;
-
+            //realizamos una peticion get al controlador indicado en la ruta que se obtuvo del triggerElement
+            //function (data) En jQuery, las funciones de callback son funciones que se pasan como argumentos a métodos 
+            // se ejecutan en ciertos eventos o cuando se completa una acción específica.
             $.get(url, function (data) {
+                //La respuesta del peticon get es codigo html una vista
                 $("#modalContentContainer").html(data);
-                $("#MyModal").modal("show");
+
+                $("#MyModal").modal("show");//Mostramos el modal
             });
         }
-
-
     </script>
 
 
