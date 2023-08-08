@@ -11,9 +11,7 @@
             Nuevo Usuario
         </a>
     </div>
-
 </div>
-
 <div class="row">
     <div class="offset-12">
         <div class="card border">
@@ -35,6 +33,23 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                <div class="modal fade" id="MyModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div id="modalContentContainer">
+                                                    <!-- Aquí se cargará el contenido de las vistas parciales -->
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                                 @foreach (var item in Model)
                                 {
                                     <tr>
@@ -43,9 +58,10 @@
                                         <td>@Html.DisplayFor(m => item.Phone)</td>
                                         <td>@Html.DisplayFor(m => item.Email)</td>
                                         <td class="text-center ">
-                                            <a class="btn btn-warning" asp-action="Edit" asp-route-id="@item.Id"><i class="bi bi-pencil-fill mx-2"></i>Editar</a>
-                                            <a class="btn btn-secondary" asp-action="Details" asp-route-id="@item.Id"><i class="bi bi-info-circle-fill mx-2"></i>Detalle</a>
-                                            <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.Id"><i class="bi bi-trash3-fill mx-2"></i>Borrar</a>
+                                            <button onclick="showPartial(this)" class="btn btn-warning open-modal" data-url="/Inicio/_EditContact" data-id="@item.Id"><i class="bi bi-pencil-fill mx-2"></i>Editar</button>
+                                            <button onclick="showPartial(this)" class="btn btn-secondary open-modal" data-url="/Inicio/_DetailsContact" data-id="@item.Id"><i class="bi bi-info-circle-fill mx-2"></i>Detalles</button>
+                                            <button onclick="showPartial(this)" class="btn btn-danger open-modal" data-url="/Inicio/_DeleteContact" data-id="@item.Id"><i class="bi bi-trash3-fill mx-2"></i>Borrar</button>
+
                                         </td>
                                     </tr>
                                 }
@@ -62,3 +78,51 @@
     </div>
 </div>
 
+@section Scripts{
+    <script>
+        $(document).ready(function () {
+            //Llamar a datatable
+            $('#tblUsuarios').DataTable({
+                language: {
+                    "decimal": "",
+                    "emptyTable": "No hay información",
+                    "info": "Mostrando _START_ a _END_ de _TOTAL_ Entradas",
+                    "infoEmpty": "Mostrando 0 to 0 of 0 Entradas",
+                    "infoFiltered": "(Filtrado de _MAX_ total entradas)",
+                    "infoPostFix": "",
+                    "thousands": ",",
+                    "lengthMenu": "Mostrar _MENU_ Entradas"
+                                            "loadingRecords": "Cargando...",
+                    "processing": "Procesando...",
+                    "search": "Buscar:",
+                    "zeroRecords": "Sin resultados encontrados",
+                    "paginate": {
+                        "first": "Primero",
+                        "last": "Ultimo",
+                        "next": "Siguiente",
+                        "previous": "Anterior"
+                    }
+                }
+            });
+        });
+    </script>
+
+    <script>
+        function showPartial(triggerElement) {
+            var url = $(triggerElement).data("url");
+            var id = $(triggerElement).data("id");
+
+            // Concatenar el ID en la URL
+            url += "?id=" + id;
+
+            $.get(url, function (data) {
+                $("#modalContentContainer").html(data);
+                $("#MyModal").modal("show");
+            });
+        }
+
+
+    </script>
+
+
+}

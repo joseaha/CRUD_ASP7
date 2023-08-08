@@ -1,0 +1,50 @@
+﻿@model CRUD_ASP7.Models.Contacto
+
+@{
+    ViewData["Title"] = "_DetailsContact";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Contacto</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-4">
+            @Html.DisplayNameFor(model => model.Id)
+        </dt>
+        <dd class="col-7">
+            @Html.DisplayFor(model => model.Id)
+        </dd>
+        <dt class="col-4">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class="col-7">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class="col-4">
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+        <dd class="col-7">
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+        <dt class="col-4">
+            @Html.DisplayNameFor(model => model.Phone)
+        </dt>
+        <dd class="col-7">
+            @Html.DisplayFor(model => model.Phone)
+        </dd>
+        <dt class="col-4">
+            @Html.DisplayNameFor(model => model.PhoneNumber)
+        </dt>
+        <dd class="col-7">
+            @Html.DisplayFor(model => model.PhoneNumber)
+        </dd>
+        <dt class="col-4">
+            @Html.DisplayNameFor(model => model.ReleaseDate)
+        </dt>
+        <dd class="col-7">
+            @Html.DisplayFor(model => model.ReleaseDate)
+        </dd>
+    </dl>
+</div>

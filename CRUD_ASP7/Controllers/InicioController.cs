@@ -41,6 +41,7 @@ namespace CRUD_ASP7.Controllers
         /// <returns></returns>
         [HttpPost]
         [ActionName("Create")]
+        [ValidateAntiForgeryToken]
         public IActionResult Create(Contacto contacto)
         {
             try
@@ -48,6 +49,7 @@ namespace CRUD_ASP7.Controllers
                 //ModelState.IsValid valida si las reglas del modelo se cumple
                 if (ModelState.IsValid)
                 {
+                    contacto.ReleaseDate = DateTime.Now;
                     _context.Contactos.Add(contacto);
                     _context.SaveChanges();
                 }
@@ -68,6 +70,7 @@ namespace CRUD_ASP7.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
+        [HttpGet]
         public IActionResult Edit( int id)
         {
             var Contacto = _context.Contactos.Find(id);
@@ -81,6 +84,7 @@ namespace CRUD_ASP7.Controllers
         /// <returns></returns>
         [HttpPost]
         [ActionName("Edit")]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Phone,PhoneNumber,Email")] Contacto modelo)
         {
             if (id != modelo.Id)
@@ -116,7 +120,7 @@ namespace CRUD_ASP7.Controllers
         {
 
             var Contacto = _context.Contactos.Find(id);
-            return View(Contacto);
+            return PartialView(Contacto);
         }
         /// <summary>
         /// Metodo que nos muestra los datos de un registro
@@ -183,7 +187,27 @@ namespace CRUD_ASP7.Controllers
             var Contacto = _context.Contactos.Find(id);
             return View(Contacto);
         }
+        [HttpGet]
+        public IActionResult _EditContact(int id)
+        {
+            var contacto = _context.Contactos.FirstOrDefault(c => c.Id == id);
+            return PartialView("_EditContact", contacto);
+        }
+        [HttpGet]
+        public IActionResult _DeleteContact(int id)
+        {
+            var Contacto = _context.Contactos.Find(id);
+            return PartialView("_DeleteContact",Contacto);
+        }
+        [HttpGet]
+        public IActionResult _DetailsContact(int id)
+        {
+     
+            var contacto =  _context.Contactos.Find(id);
 
+            return PartialView("_DetailsContact",contacto);
+
+        }
         //este fragmento de código se encarga de manejar errores en una aplicación ASP.NET Core.
         //Cuando se produce un error, el método Error() se ejecuta y devuelve una vista que muestra información sobre el error, incluido un identificador único de solicitud.
         //La respuesta generada no se almacena en caché en absoluto.
