@@ -1,11 +1,11 @@
 # Creación de CRUD en ASP.NET EF 7.0 con SQL Server y MVC
 
-Este repositorio contiene un ejemplo de cómo crear un sistema CRUD (Create, Read, Update, Delete) utilizando ASP.NET EF 7.0, SQL Server, y el patrón de arquitectura Modelo-Vista-Controlador (MVC). Este proyecto fue desarrollado como parte de mi formación académica en el Instituto Nacional de Aprendizaje (INA), y utiliza tecnologías como Bootstrap, jQuery y JavaScript para mejorar la interfaz de usuario y la interacción con el usuario.
+Este repositorio contiene un ejemplo de cómo crear un sistema CRUD (Create, Read, Update, Delete) utilizando ASP.NET EF 7.0, SQL Server, y el patrón de arquitectura Modelo-Vista-Controlador (MVC). Este proyecto fue desarrollado como parte de mi formación académica en el Instituto Nacional de Aprendizaje (INA), y utiliza tecnologías como Bootstrap, jQuery para mejorar la interfaz de usuario y la interacción con el usuario.
 
 ## Requisitos previos
 
 - Visual Studio (versión recomendada: 2019 o posterior)
-- SQL Server (versión recomendada: 2017 o posterior)
+- SQL Server (versión recomendada: 2019 o posterior)
 - Conocimientos básicos de C#, ASP.NET y MVC
 
 ## Instalación
