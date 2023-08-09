@@ -17,28 +17,29 @@
             </div>
             <div class="form-group">
                 <label asp-for="@Model.Name" class="control-label"></label>
-                <input asp-for="@Model.Name" class="form-control" />
+                <input asp-for="@Model.Name" class="form-control" required />
                 <span asp-validation-for="@Model.Name" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="@Model.Email" class="control-label"></label>
-                <input asp-for="@Model.Email" class="form-control" />
+                <input asp-for="@Model.Email" class="form-control" required />
                 <span asp-validation-for="@Model.Email" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="@Model.Phone" class="control-label"></label>
-                <input asp-for="@Model.Phone" class="form-control" />
+                <input asp-for="@Model.Phone" class="form-control" required />
                 <span asp-validation-for="@Model.Phone" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="@Model.PhoneNumber" class="control-label"></label>
-                <input asp-for="@Model.PhoneNumber" class="form-control" />
+                <input asp-for="@Model.PhoneNumber" class="form-control" required />
                 <span asp-validation-for="@Model.PhoneNumber" class="text-danger"></span>
             </div>
             <div class="form-group mt-5">
                 <input type="submit" value="Save" class="btn btn-primary mx-2" />
             </div>
         </form>
+
     </div>
 </div>
 @section Scripts {

@@ -71,7 +71,7 @@ namespace CRUD_ASP7.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet]
-        public IActionResult Edit( int id)
+        public IActionResult Edit(int id)
         {
             var Contacto = _context.Contactos.Find(id);
             return View(Contacto);
@@ -87,28 +87,38 @@ namespace CRUD_ASP7.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Phone,PhoneNumber,Email")] Contacto modelo)
         {
+            // Verificar si el id proporcionado coincide con el id en el modelo
             if (id != modelo.Id)
             {
-                return NotFound();
+                return NotFound(); // Devolver respuesta "NotFound" si el id no coincide
             }
 
             if (ModelState.IsValid)
             {
                 try
                 {
+                    // Actualizar el modelo en la base de datos
                     _context.Update(modelo);
                     await _context.SaveChangesAsync();
+
+                    // Redireccionar al método Index del controlador actual
                     return RedirectToAction(nameof(Index));
                 }
                 catch (DbUpdateException)
                 {
+                    // Agregar un mensaje de error al ModelState si ocurre un error en la base de datos
                     ModelState.AddModelError("", "Unable to save changes. " +
                         "Try again, and if the problem persists, " +
                         "see your system administrator.");
                 }
             }
-            return View(modelo);
+
+            // Si llegamos aquí, el ModelState no es válido, o ha habido una excepción al guardar
+            // Devolver la vista con el modelo para que el usuario pueda corregir los errores
+            return NotFound();
+
         }
+
         /*************
            Details
         *************/
@@ -187,6 +197,7 @@ namespace CRUD_ASP7.Controllers
             var Contacto = _context.Contactos.Find(id);
             return View(Contacto);
         }
+        //----------------------------------
         [HttpGet]
         public IActionResult _EditContact(int id)
         {
@@ -197,19 +208,19 @@ namespace CRUD_ASP7.Controllers
         public IActionResult _DeleteContact(int id)
         {
             var Contacto = _context.Contactos.Find(id);
-            return PartialView("_DeleteContact",Contacto);
+            return PartialView("_DeleteContact", Contacto);
         }
         [HttpGet]
         public IActionResult _DetailsContact(int id)
         {
-     
-            var contacto =  _context.Contactos.Find(id);
 
-            return PartialView("_DetailsContact",contacto);
+            var contacto = _context.Contactos.Find(id);
+
+            return PartialView("_DetailsContact", contacto);
 
         }
-        [HttpGet]    
-        public IActionResult _SaludarContacto( int id)
+        [HttpGet]
+        public IActionResult _SaludarContacto(int id)
         {
             var contacto = _context.Contactos.Find(id);
             return PartialView("_SaludarContacto", contacto);

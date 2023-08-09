@@ -10,46 +10,46 @@
 <div>
     <h4>Contacto</h4>
     <hr />
+    <dl class="row">
+        <dt class="col-4">
+            @Html.DisplayNameFor(model => model.Id)
+        </dt>
+        <dd class="col-7">
+            @Html.DisplayFor(model => model.Id)
+        </dd>
+        <dt class="col-4">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class="col-7">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class="col-4">
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+        <dd class="col-7">
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+        <dt class="col-4">
+            @Html.DisplayNameFor(model => model.Phone)
+        </dt>
+        <dd class="col-7">
+            @Html.DisplayFor(model => model.Phone)
+        </dd>
+        <dt class="col-4">
+            @Html.DisplayNameFor(model => model.PhoneNumber)
+        </dt>
+        <dd class="col-7">
+            @Html.DisplayFor(model => model.PhoneNumber)
+        </dd>
+        <dt class="col-4">
+            @Html.DisplayNameFor(model => model.ReleaseDate)
+        </dt>
+        <dd class="col-7">
+            @Html.DisplayFor(model => model.ReleaseDate)
+        </dd>
+    </dl>
     <form asp-action="Delete" class="g-2" method="post">
-        <dl class="row">
-            <dt class="col-4">
-                @Html.DisplayNameFor(model => model.Id)
-            </dt>
-            <dd class="col-7">
-                @Html.DisplayFor(model => model.Id)
-                <input type="hidden" name="id" value="@Model.Id" readonly />
-            </dd>
-            <dt class="col-4">
-                @Html.DisplayNameFor(model => model.Name)
-            </dt>
-            <dd class="col-7">
-                @Html.DisplayFor(model => model.Name)
-            </dd>
-            <dt class="col-4">
-                @Html.DisplayNameFor(model => model.Email)
-            </dt>
-            <dd class="col-7">
-                @Html.DisplayFor(model => model.Email)
-            </dd>
-            <dt class="col-4">
-                @Html.DisplayNameFor(model => model.Phone)
-            </dt>
-            <dd class="col-7">
-                @Html.DisplayFor(model => model.Phone)
-            </dd>
-            <dt class="col-4">
-                @Html.DisplayNameFor(model => model.PhoneNumber)
-            </dt>
-            <dd class="col-7">
-                @Html.DisplayFor(model => model.PhoneNumber)
-            </dd>
-            <dt class="col-4">
-                @Html.DisplayNameFor(model => model.ReleaseDate)
-            </dt>
-            <dd class="col-7">
-                @Html.DisplayFor(model => model.ReleaseDate)
-            </dd>
-        </dl>
-        <input type="submit" value="Eliminar" class="btn btn-danger mx-2"/>
+        <input type="hidden" name="id" value="@Model.Id" readonly />
+        <input type="submit" value="Eliminar" class="btn btn-danger mx-2" />
     </form>
 </div>
