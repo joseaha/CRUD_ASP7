@@ -13,7 +13,7 @@ Este repositorio contiene un ejemplo de cómo crear un sistema CRUD (Create, Rea
 1. Clona este repositorio en tu máquina local usando el siguiente comando:
 
 ```bash
-git clone https://github.com/TuUsuario/ProyectoCRUDASPNET.git
+git clone https://github.com/joseaha/CRUD_ASP7.git
 ```
 
 2. Abre el proyecto en Visual Studio.
